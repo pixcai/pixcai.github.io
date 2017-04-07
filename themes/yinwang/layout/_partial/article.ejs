@@ -4,7 +4,7 @@
 </li>
 <% } else { %>
 <%- post.content %>
-<% if (page.comments){ %>
+<% if (page.comments && !(is_current('codes/', true))){ %>
 <div id="uyan_frame"></div>
 <% } %>
 <% } %>
