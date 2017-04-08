@@ -1,2 +1,19 @@
-<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" defer></script>
-<script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js" defer></script>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script>
+$(function () {
+	var pathname = location.pathname.split('/');
+	var items = $('.item');
+	if (pathname.length < 3) {
+		$(items[0]).addClass('active');
+	}
+	else {
+		items.each(function () {
+			var route = $(this).attr('data-route').split('/');
+			if (pathname[1] === route[0]) {
+				$(this).addClass('active');
+			}
+		});
+	}
+});
+</script>

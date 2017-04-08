@@ -1,14 +1,9 @@
 <html>
-<%- partial('_partial/head')%>
+<%- partial('_partial/head') %>
 <body>
-<%- body%>
-
-<% if (is_home()){ %>
-<!--加载导航栏所需js文件-->
-<%- partial('_partial/afterfooter')%>
-<% } %>
-<% if ((is_post() || is_current('about/', true)) && page.comments){ %>
-<script src="http://v2.uyan.cc/code/uyan.js" async></script>
+<%- body %>
+<% if ((is_post() || is_current('about/', true)) && page.comments) { %>
+	<script src="http://v2.uyan.cc/code/uyan.js" async></script>
 <% } %>
 </body>
 </html>

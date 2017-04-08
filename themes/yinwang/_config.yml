@@ -5,7 +5,7 @@ version: 2.0
 favicon: /favicon.ico
 
 # Set default keywords (Use a comma to separate)
-keywords: "My Blog, Spider Bitch!"
+keywords: "博客,前端,JavaScript,Node.js,Canvas,WebGL,React,Vue"
 
 # Code Highlight theme
 # Available value: normal | night | night eighties | night blue | night bright

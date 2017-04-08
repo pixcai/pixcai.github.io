@@ -1,17 +1,17 @@
-<%- partial('_partial/nav')%>
+<%- partial('_partial/nav') %>
 <div class="row" style="padding-top: 70px">
     <div class="container center-block">
-            <div class="panel panel-default" style="margin:auto 5%;">
-                <div class="panel-heading">
-                    <h3 class="panel-title">博客列表</h3>
-                </div>
-                <ul class="list-group">
-                    <% if (pagination == 2){ %>
-                    <% page.posts.each(function(post){ %>
-                    <%- partial('article', {post: post, index: true}) %>
-                    <% }) %>
-                    <% } %>
-                </ul>
+        <div class="panel panel-default" style="margin:auto 5%;">
+            <div class="panel-heading">
+                <h3 class="panel-title"><%= _p('archive') %></h3>
             </div>
+            <ul class="list-group">
+                <% if (pagination == 2) { %>
+                    <% site.posts.each(function (post) { %>
+                        <%- partial('article', {post: post, index: true}) %>
+                    <% }) %>
+                <% } %>
+            </ul>
+        </div>
     </div>
 </div>

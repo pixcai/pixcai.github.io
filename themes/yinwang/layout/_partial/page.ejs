@@ -1,0 +1,11 @@
+<%- partial('_partial/nav') %>
+<div class="row" style="padding-top: 70px">
+    <div class="container center-block">
+        <% if (post) { %>
+            <%- post.content %>
+            <% if (post.comments && !is_current('codes/', true)) { %>
+            	<div class="hidden-xs" id="uyan_frame"></div>
+            <% } %>
+        <% } %>
+    </div>
+</div>
