@@ -12,7 +12,7 @@ before_install:
 - eval $(ssh-agent -s)
 - ssh-add ~/.ssh/id_rsa
 - cp .travis/ssh_config ~/.ssh/config
-- ssh-agent -k
+- ssh-agent -K
 - git config --global user.name pixcai
 - git config --global user.email pixcai@163.com
 install:
