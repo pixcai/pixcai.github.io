@@ -21,5 +21,5 @@ cache:
   directories:
   - node_modules
 script:
-- hexo clean
-- travis_wait hexo deploy
+- travis_wait hexo clean
+- hexo deploy
