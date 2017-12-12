@@ -6,11 +6,11 @@ branches:
   - pixcai
 before_install:
 - export TZ='Asia/Shanghai'
-- openssl aes-256-cbc -K $encrypted_971057cd905e_key -iv $encrypted_971057cd905e_iv
+- openssl aes-256-cbc -K $encrypted_21be7bd1840b_key -iv $encrypted_21be7bd1840b_iv
   -in .travis/id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
-- eval $(ssh-agent -s)
-- ssh-add -K ~/.ssh/id_rsa
+- eval $(ssh-agent)
+- ssh-add ~/.ssh/id_rsa
 - cp .travis/ssh_config ~/.ssh/config
 - git config --global user.name pixcai
 - git config --global user.email pixcai@163.com
