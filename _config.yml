@@ -3,12 +3,15 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 蔡学华的博客
-subtitle:
-description: 
+title:
+SEOTitle: pixcai的博客
+subtitle: 求知若饥，虚心若愚
+description: 前端笔记
 author: pixcai
-language: zh-Hans
+language: zh
 timezone: Asia/Shanghai
+email: pixcai@163.com
+keyword: "JavaScript HTML CSS Nodejs React Vue Python"
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -16,6 +19,33 @@ url: http://blog.pixcai.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
+
+sidebar-avatar: images/avatar.jpg
+
+friends: [
+  {
+    title: Pyclear,
+    href: https://pyclear.me
+  }
+]
+
+comment:
+  type: gitment
+  id: df7e994d63cb504384eb
+  secret: fc8379cd8be8720fc588f1509c5d0dff6460f23a
+  owner: pixcai
+  repo: pixcai.github.io
+
+donate:
+  img: images/wechat.png
+  content: 感谢鼓励
+
+search:
+  path: search.json
+  field: post
+
+post_style:
+  indent: indent
 
 # Directory
 source_dir: source
@@ -34,14 +64,14 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
   enable: true
   line_number: true
   auto_detect: true
-  tab_replace: '  '
+  tab_replace: "  "
 
 # Category & Tag
 default_category: uncategorized
@@ -52,7 +82,7 @@ tag_map:
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
 ## http://momentjs.com/docs/#/displaying/format/
-date_format: YYYY年MM月DD日
+date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 
 # Pagination
@@ -63,7 +93,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: yinwang
+theme: aircloud
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

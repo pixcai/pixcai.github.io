@@ -1,6 +1,7 @@
 ---
 title: 我的JavaScript命名规范
 date: 2017-04-25 23:55:32
+tags: javascript
 ---
 ## 变量
 1、普通变量采用小驼峰命名法。
@@ -171,6 +172,3 @@ var Rect = extend(Shape, {
 var rect = new Rect(0, 0, 300, 150)
 console.log(rect.x, rect.y, rect.width, rect.height, rect.getType())
 ```
-
-## 类型检查库
-[cc-type](https://github.com/pixcai/cc-type)
