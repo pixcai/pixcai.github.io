@@ -23,7 +23,7 @@ function defaultComparator (a, b) {
 ```
 
 ### 改进
-作者直接将比较函数的结果与零比较，将范围限制的比较窄。如果将比较操作放入比较函数内部，那我们只需要：
+作者直接将比较函数的结果与零比较，将范围限制的比较窄(为了和`Array.prototype.sort`参数兼容)。如果将比较操作放入比较函数内部，那我们只需要：
 ```js
 function defaultComparator(a, b) {
   return a - b > 0
@@ -37,3 +37,4 @@ function customComparator(a, b) {
   return a - b > 2
 }
 ```
+不过这样做的一个弊端是破坏了和`Array.prototype.sort`的兼容性。
