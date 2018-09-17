@@ -36,9 +36,9 @@ comment:
   owner: pixcai
   repo: pixcai.github.io
 
-donate:
-  img: images/wechat.png
-  content: 感谢鼓励
+# donate:
+#  img: images/wechat.png
+#  content: 感谢鼓励
 
 search:
   path: search.json
