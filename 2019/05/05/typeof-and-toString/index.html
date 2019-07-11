@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="前端笔记">
+    <meta name="keyword" content="JavaScript HTML CSS Nodejs React Vue Python">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+
+    <title>
+        
+        typeof和toString的差别 - pixcai的博客
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 求知若饥，虚心若愚 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <a href="/" class="avatar">
+            <img src="/images/avatar.jpg" />
+        </a>
+        <div class="name">
+            <i>pixcai</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 求知若饥，虚心若愚 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        typeof和toString的差别
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-05-05 14:45:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>以下参考<code>jerryscript</code>项目中关于 <strong>ecma</strong> 的实现：</p>
+<p><code>typeof</code>是直接判断值类型(位于<code>jerry-core/vm/opcodes.c</code>)：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 'typeof' opcode handler.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * See also: ECMA-262 v5, 11.4.3</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @return ecma value</span></span><br><span class="line"><span class="comment"> *         Returned value must be freed with ecma_free_value</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">ecma_value_t</span></span><br><span class="line">opfunc_typeof (<span class="keyword">ecma_value_t</span> left_value) <span class="comment">/**&lt; left value */</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">ecma_value_t</span> ret_value = ecma_make_simple_value (ECMA_SIMPLE_VALUE_EMPTY);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">ecma_string_t</span> *type_str_p = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (ecma_is_value_undefined (left_value))</span><br><span class="line">  &#123;</span><br><span class="line">    type_str_p = ecma_get_magic_string (LIT_MAGIC_STRING_UNDEFINED);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (ecma_is_value_null (left_value))</span><br><span class="line">  &#123;</span><br><span class="line">    type_str_p = ecma_get_magic_string (LIT_MAGIC_STRING_OBJECT);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (ecma_is_value_boolean (left_value))</span><br><span class="line">  &#123;</span><br><span class="line">    type_str_p = ecma_get_magic_string (LIT_MAGIC_STRING_BOOLEAN);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (ecma_is_value_number (left_value))</span><br><span class="line">  &#123;</span><br><span class="line">    type_str_p = ecma_get_magic_string (LIT_MAGIC_STRING_NUMBER);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (ecma_is_value_string (left_value))</span><br><span class="line">  &#123;</span><br><span class="line">    type_str_p = ecma_get_magic_string (LIT_MAGIC_STRING_STRING);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    JERRY_ASSERT (ecma_is_value_object (left_value));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (ecma_op_is_callable (left_value))</span><br><span class="line">    &#123;</span><br><span class="line">      type_str_p = ecma_get_magic_string (LIT_MAGIC_STRING_FUNCTION);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      type_str_p = ecma_get_magic_string (LIT_MAGIC_STRING_OBJECT);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ret_value = ecma_make_string_value (type_str_p);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> ret_value;</span><br><span class="line">&#125; <span class="comment">/* opfunc_typeof */</span></span><br></pre></td></tr></table></figure></p>
+<p>而Object.prototype.toString是泛型方法，只判断类类型(位于<code>jerry-core/emca/builtin-objects/ecma-builtin-object-prototype.c</code>)：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The Object.prototype object's 'toString' routine</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * See also:</span></span><br><span class="line"><span class="comment"> *          ECMA-262 v5, 15.2.4.2</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @return ecma value</span></span><br><span class="line"><span class="comment"> *         Returned value must be freed with ecma_free_value.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">ecma_value_t</span></span><br><span class="line">ecma_builtin_object_prototype_object_to_string (<span class="keyword">ecma_value_t</span> this_arg) <span class="comment">/**&lt; this argument */</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> ecma_builtin_helper_object_to_string (this_arg);</span><br><span class="line">&#125; <span class="comment">/* ecma_builtin_object_prototype_object_to_string */</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** \addtogroup ecma ECMA</span></span><br><span class="line"><span class="comment"> * @&#123;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * \addtogroup ecmabuiltinhelpers ECMA builtin helper operations</span></span><br><span class="line"><span class="comment"> * @&#123;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Common implementation of the Object.prototype.toString routine</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * See also:</span></span><br><span class="line"><span class="comment"> *          ECMA-262 v5, 15.2.4.2</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Used by:</span></span><br><span class="line"><span class="comment"> *         - The Object.prototype.toString routine.</span></span><br><span class="line"><span class="comment"> *         - The Array.prototype.toString routine as fallback.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @return ecma value</span></span><br><span class="line"><span class="comment"> *         Returned value must be freed with ecma_free_value.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ecma_value_t</span></span><br><span class="line">ecma_builtin_helper_object_to_string (<span class="keyword">const</span> <span class="keyword">ecma_value_t</span> this_arg) <span class="comment">/**&lt; this argument */</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">lit_magic_string_id_t</span> type_string;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (ecma_is_value_undefined (this_arg))</span><br><span class="line">  &#123;</span><br><span class="line">    type_string = LIT_MAGIC_STRING_UNDEFINED_UL;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (ecma_is_value_null (this_arg))</span><br><span class="line">  &#123;</span><br><span class="line">    type_string = LIT_MAGIC_STRING_NULL_UL;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">ecma_value_t</span> obj_this = ecma_op_to_object (this_arg);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (ECMA_IS_VALUE_ERROR (obj_this))</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">return</span> obj_this;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    JERRY_ASSERT (ecma_is_value_object (obj_this));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">ecma_object_t</span> *obj_p = ecma_get_object_from_value (obj_this);</span><br><span class="line"></span><br><span class="line">    type_string = ecma_object_get_class_name (obj_p);</span><br><span class="line"></span><br><span class="line">    ecma_free_value (obj_this);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">ecma_string_t</span> *ret_string_p;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Building string "[object #type#]" where type is 'Undefined',</span></span><br><span class="line"><span class="comment">     'Null' or one of possible object's classes.</span></span><br><span class="line"><span class="comment">     The string with null character is maximum 27 characters long. */</span></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">lit_utf8_size_t</span> buffer_size = <span class="number">27</span>;</span><br><span class="line">  <span class="keyword">lit_utf8_byte_t</span> str_buffer[buffer_size];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">lit_utf8_byte_t</span> *buffer_ptr = str_buffer;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">lit_magic_string_id_t</span> magic_string_ids[] =</span><br><span class="line">  &#123;</span><br><span class="line">    LIT_MAGIC_STRING_LEFT_SQUARE_CHAR,</span><br><span class="line">    LIT_MAGIC_STRING_OBJECT,</span><br><span class="line">    LIT_MAGIC_STRING_SPACE_CHAR,</span><br><span class="line">    type_string,</span><br><span class="line">    LIT_MAGIC_STRING_RIGHT_SQUARE_CHAR</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">uint32_t</span> i = <span class="number">0</span>; i &lt; <span class="keyword">sizeof</span> (magic_string_ids) / <span class="keyword">sizeof</span> (<span class="keyword">lit_magic_string_id_t</span>); ++i)</span><br><span class="line">  &#123;</span><br><span class="line">    buffer_ptr = lit_copy_magic_string_to_buffer (magic_string_ids[i], buffer_ptr,</span><br><span class="line">                                                  (<span class="keyword">lit_utf8_size_t</span>) ((str_buffer + buffer_size) - buffer_ptr));</span><br><span class="line">    JERRY_ASSERT (buffer_ptr &lt;= str_buffer + buffer_size);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ret_string_p = ecma_new_ecma_string_from_utf8 (str_buffer, (<span class="keyword">lit_utf8_size_t</span>) (buffer_ptr - str_buffer));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> ecma_make_string_value (ret_string_p);</span><br><span class="line">&#125; <span class="comment">/* ecma_builtin_helper_object_to_string */</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lit_magic_string_id_t</span></span><br><span class="line">ecma_object_get_class_name (<span class="keyword">ecma_object_t</span> *obj_p) <span class="comment">/**&lt; object */</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">ecma_object_type_t</span> type = ecma_get_object_type (obj_p);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span> (type)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">case</span> ECMA_OBJECT_TYPE_ARRAY:</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">return</span> LIT_MAGIC_STRING_ARRAY_UL;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">case</span> ECMA_OBJECT_TYPE_CLASS:</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">ecma_extended_object_t</span> *ext_object_p = (<span class="keyword">ecma_extended_object_t</span> *) obj_p;</span><br><span class="line">      <span class="keyword">return</span> ext_object_p-&gt;u.class_prop.class_id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">case</span> ECMA_OBJECT_TYPE_PSEUDO_ARRAY:</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">ecma_extended_object_t</span> *ext_obj_p = (<span class="keyword">ecma_extended_object_t</span> *) obj_p;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">switch</span> (ext_obj_p-&gt;u.pseudo_array.type)</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">case</span> ECMA_PSEUDO_ARRAY_ARGUMENTS:</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">return</span> LIT_MAGIC_STRING_ARGUMENTS_UL;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> CONFIG_DISABLE_ES2015_TYPEDARRAY_BUILTIN</span></span><br><span class="line">        <span class="keyword">case</span> ECMA_PSEUDO_ARRAY_TYPEDARRAY:</span><br><span class="line">        <span class="keyword">case</span> ECMA_PSEUDO_ARRAY_TYPEDARRAY_WITH_INFO:</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">return</span> ext_obj_p-&gt;u.pseudo_array.u1.class_id;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* !CONFIG_DISABLE_ES2015_TYPEDARRAY_BUILTIN */</span></span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">        &#123;</span><br><span class="line">          JERRY_UNREACHABLE ();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      JERRY_UNREACHABLE ();</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">case</span> ECMA_OBJECT_TYPE_FUNCTION:</span><br><span class="line">    <span class="keyword">case</span> ECMA_OBJECT_TYPE_EXTERNAL_FUNCTION:</span><br><span class="line">    <span class="keyword">case</span> ECMA_OBJECT_TYPE_BOUND_FUNCTION:</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">return</span> LIT_MAGIC_STRING_FUNCTION_UL;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">    &#123;</span><br><span class="line">      JERRY_ASSERT (type == ECMA_OBJECT_TYPE_GENERAL);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (ecma_get_object_is_builtin (obj_p))</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">ecma_extended_object_t</span> *ext_obj_p = (<span class="keyword">ecma_extended_object_t</span> *) obj_p;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (ext_obj_p-&gt;u.built_in.id)</span><br><span class="line">        &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> CONFIG_DISABLE_MATH_BUILTIN</span></span><br><span class="line">          <span class="keyword">case</span> ECMA_BUILTIN_ID_MATH:</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="keyword">return</span> LIT_MAGIC_STRING_MATH_UL;</span><br><span class="line">          &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* !CONFIG_DISABLE_MATH_BUILTIN */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> CONFIG_DISABLE_JSON_BUILTIN</span></span><br><span class="line">          <span class="keyword">case</span> ECMA_BUILTIN_ID_JSON:</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="keyword">return</span> LIT_MAGIC_STRING_JSON_U;</span><br><span class="line">          &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* !CONFIG_DISABLE_JSON_BUILTIN */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> CONFIG_DISABLE_ERROR_BUILTINS</span></span><br><span class="line">          <span class="keyword">case</span> ECMA_BUILTIN_ID_EVAL_ERROR_PROTOTYPE:</span><br><span class="line">          <span class="keyword">case</span> ECMA_BUILTIN_ID_RANGE_ERROR_PROTOTYPE:</span><br><span class="line">          <span class="keyword">case</span> ECMA_BUILTIN_ID_REFERENCE_ERROR_PROTOTYPE:</span><br><span class="line">          <span class="keyword">case</span> ECMA_BUILTIN_ID_SYNTAX_ERROR_PROTOTYPE:</span><br><span class="line">          <span class="keyword">case</span> ECMA_BUILTIN_ID_TYPE_ERROR_PROTOTYPE:</span><br><span class="line">          <span class="keyword">case</span> ECMA_BUILTIN_ID_URI_ERROR_PROTOTYPE:</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* !CONFIG_DISABLE_ERROR_BUILTINS */</span></span></span><br><span class="line">          <span class="keyword">case</span> ECMA_BUILTIN_ID_ERROR_PROTOTYPE:</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="keyword">return</span> LIT_MAGIC_STRING_ERROR_UL;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">default</span>:</span><br><span class="line">          &#123;</span><br><span class="line">            JERRY_ASSERT (ecma_object_check_class_name_is_object (obj_p));</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> LIT_MAGIC_STRING_OBJECT_UL;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">return</span> LIT_MAGIC_STRING_OBJECT_UL;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="comment">/* ecma_object_get_class_name */</span></span><br></pre></td></tr></table></figure>
+<p>对于其它的具体类型，仍然是判断值，例如：<br><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** \addtogroup ecma ECMA</span></span><br><span class="line"><span class="comment"> * @&#123;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * \addtogroup ecmabuiltins</span></span><br><span class="line"><span class="comment"> * @&#123;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * \addtogroup booleanprototype ECMA Boolean.prototype object built-in</span></span><br><span class="line"><span class="comment"> * @&#123;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The Boolean.prototype object's 'toString' routine</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * See also:</span></span><br><span class="line"><span class="comment"> *          ECMA-262 v5, 15.6.4.2</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @return ecma value</span></span><br><span class="line"><span class="comment"> *         Returned value must be freed with ecma_free_value.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">static ecma<span class="number">_</span><span class="keyword">value</span><span class="number">_</span>t</span><br><span class="line">ecma<span class="number">_</span>builtin<span class="number">_</span>boolean<span class="number">_p</span>rototype<span class="number">_</span><span class="keyword">object</span><span class="number">_</span>to<span class="number">_</span>string (ecma<span class="number">_</span><span class="keyword">value</span><span class="number">_</span>t <span class="keyword">this</span><span class="number">_</span>arg) <span class="comment">/**&lt; this argument */</span></span><br><span class="line">&#123;</span><br><span class="line">  ecma<span class="number">_</span><span class="keyword">value</span><span class="number">_</span>t ret<span class="number">_</span><span class="keyword">value</span> = ecma<span class="number">_m</span>ake<span class="number">_</span>simple<span class="number">_</span><span class="keyword">value</span> (ECMA<span class="number">_</span>SIMPLE<span class="number">_</span>VALUE<span class="number">_</span>EMPTY);</span><br><span class="line"></span><br><span class="line">  ECMA<span class="number">_T</span>RY<span class="number">_</span>CATCH (<span class="keyword">value</span><span class="number">_</span><span class="keyword">of</span><span class="number">_</span>ret,</span><br><span class="line">                  ecma<span class="number">_</span>builtin<span class="number">_</span>boolean<span class="number">_p</span>rototype<span class="number">_</span><span class="keyword">object</span><span class="number">_</span><span class="keyword">value</span><span class="number">_</span><span class="keyword">of</span> (<span class="keyword">this</span><span class="number">_</span>arg),</span><br><span class="line">                  ret<span class="number">_</span><span class="keyword">value</span>);</span><br><span class="line"></span><br><span class="line">  ecma<span class="number">_</span>string<span class="number">_</span>t *ret<span class="number">_</span>str<span class="number">_p</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (ecma<span class="number">_</span><span class="keyword">is</span><span class="number">_</span><span class="keyword">value</span><span class="number">_</span>true (<span class="keyword">value</span><span class="number">_</span><span class="keyword">of</span><span class="number">_</span>ret))</span><br><span class="line">  &#123;</span><br><span class="line">    ret<span class="number">_</span>str<span class="number">_p</span> = ecma<span class="number">_</span>get<span class="number">_m</span>agic<span class="number">_</span>string (LIT<span class="number">_M</span>AGIC<span class="number">_</span>STRING<span class="number">_T</span>RUE);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    JERRY<span class="number">_</span>ASSERT (ecma<span class="number">_</span><span class="keyword">is</span><span class="number">_</span><span class="keyword">value</span><span class="number">_</span>boolean (<span class="keyword">value</span><span class="number">_</span><span class="keyword">of</span><span class="number">_</span>ret));</span><br><span class="line"></span><br><span class="line">    ret<span class="number">_</span>str<span class="number">_p</span> = ecma<span class="number">_</span>get<span class="number">_m</span>agic<span class="number">_</span>string (LIT<span class="number">_M</span>AGIC<span class="number">_</span>STRING<span class="number">_</span>FALSE);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ret<span class="number">_</span><span class="keyword">value</span> = ecma<span class="number">_m</span>ake<span class="number">_</span>string<span class="number">_</span><span class="keyword">value</span> (ret<span class="number">_</span>str<span class="number">_p</span>);</span><br><span class="line"></span><br><span class="line">  ECMA<span class="number">_</span>FINALIZE (<span class="keyword">value</span><span class="number">_</span><span class="keyword">of</span><span class="number">_</span>ret);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> ret<span class="number">_</span><span class="keyword">value</span>;</span><br><span class="line">&#125; <span class="comment">/* ecma_builtin_boolean_prototype_object_to_string */</span></span><br></pre></td></tr></table></figure></p>
+
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>友情链接 /</span>
+        
+        <span><a href="https://pyclear.me">Pyclear</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>驱动 <a href="https://hexo.io/">Hexo</a>  主题 <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: 'typeof和toString的差别',
+        owner: 'pixcai',
+        repo: 'pixcai.github.io',
+        oauth: {
+            client_id: 'df7e994d63cb504384eb',
+            client_secret: 'fc8379cd8be8720fc588f1509c5d0dff6460f23a',
+        },
+    })
+    gitment.render('comment-container')
+</script>
+
+</html>

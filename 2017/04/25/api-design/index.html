@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="前端笔记">
+    <meta name="keyword" content="JavaScript HTML CSS Nodejs React Vue Python">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+
+    <title>
+        
+        我的JavaScript命名规范 - pixcai的博客
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 求知若饥，虚心若愚 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <a href="/" class="avatar">
+            <img src="/images/avatar.jpg" />
+        </a>
+        <div class="name">
+            <i>pixcai</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#变量"><span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数"><span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、参数"><span class="toc-text">一、参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、函数名"><span class="toc-text">二、函数名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、参数检查规范"><span class="toc-text">三、参数检查规范</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#语句"><span class="toc-text">语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码例子"><span class="toc-text">代码例子</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 求知若饥，虚心若愚 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        我的JavaScript命名规范
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2017-04-25 23:55:32</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>1、普通变量采用小驼峰命名法。<br>例如：<code>var isChar = false</code>、<code>var ok = true</code></p>
+<p>2、变量私有但可以暴露给外部访问，则用单个下划线。<br>例如：<code>var _status = false</code></p>
+<p>3、变量私有且只在特定范围内有效，强烈不建议直接访问，则用双下划线。<br>例如：<code>var __status = false</code><br>特殊情况下，如果变量名前后加双下划线有一定意义，那么可以用前后双下划线形式。<br>例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line"><span class="keyword">var</span> __proto__ = obj.__proto__    <span class="comment">// 此处变量前后加双下划线有特殊意义</span></span><br></pre></td></tr></table></figure></p>
+<p>4、与关键字或保留字或内置变量同名的变量用前缀符号<code>$</code>表示，并且<code>$</code>应该在下划线后。<br>例如：<code>var $class = null</code>、<code>var __$dirname = __dirname</code></p>
+<p>对于单下划线的私有变量，可以直接访问，但不能用于修改。双下划线的变量既不能直接访问更不能直接修改。<br>如果需要对私有变量进行修改，必须提供<code>getter/setter</code>函数。<br>例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.__status = <span class="literal">false</span></span><br><span class="line">  <span class="comment">// 提供Setter/Getter函数</span></span><br><span class="line">  <span class="keyword">this</span>.setStatus = <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.__status = value</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.getStatus = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.__status</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>在函数主体为空或者只有一条语句的情况下，函数可以写作一行，其它任何情况下函数都必须写成多行。</p>
+<h3 id="一、参数"><a href="#一、参数" class="headerlink" title="一、参数"></a>一、参数</h3><p>1、如果某个参数是必填的，那么它应该符合小驼峰命名法。<br>例如：<code>function clone(obj) {}</code><br>如果参数是引用类型，除非明确知道修改所带来的影响和结果，否则在对引用类型进行更改时，必须进行深复制，以免不当的操作所带来的结果向后传递，使错误源难以定位。</p>
+<p>2、如果某个参数是可选的，那么它应该用单个前缀下划线表示。<br>例如：<code>function clone(obj, _isDeep) {}</code></p>
+<p>3、如果某个参数需要使用<code>new</code>关键字构造，则第一个字母应该大写。<br>例如：<code>function extend(BaseClass, properties) {}</code></p>
+<h3 id="二、函数名"><a href="#二、函数名" class="headerlink" title="二、函数名"></a>二、函数名</h3><p>1、普通函数名应该符合小驼峰命名法，如果函数应该用<code>new</code>关键字构造，那么它的首字母应该大写。<br>例如：<code>function clone(obj) {}</code>、<code>function BaseClass() {}</code></p>
+<p>2、私有函数命名必须以双下划线开始同时以双下划线结束，并且私有函数不存在单下划线的情况。<br>例如：<code>function __find__() {}</code>是正确的，<code>function _find_() {}</code>是错误的。</p>
+<h3 id="三、参数检查规范"><a href="#三、参数检查规范" class="headerlink" title="三、参数检查规范"></a>三、参数检查规范</h3><p>对于需要传参的函数调用，除非参数符合规范命名而且唯一，例如大写开头的参数需要使用<code>new</code>构造、单下划线开头的参数是可选的。除此之外，其它类型不明确的参数，例如数字、字符串、对象都是小驼峰命名，在使用参数前，必须对参数进行类型检查。这个类型检查只针对需要使用到的参数及其值，那些传参了但未使用的参数可以忽略。如果<code>B</code>函数在<code>A</code>函数内部被调用，那么当<code>B</code>函数用到<code>A</code>的参数并且<code>A</code>也用到这个参数，则<code>B</code>不需再进行类型检查，<code>A</code>必须保证自己使用的参数传给<code>B</code>函数时依然是正确的。<br>例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params">name, value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> value !== <span class="string">'number'</span>) &#123;</span><br><span class="line">    value = <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.value = value</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!(<span class="keyword">typeof</span> name === <span class="string">'string'</span> &amp;&amp; name !== <span class="string">''</span>)) &#123;</span><br><span class="line">    name = <span class="string">'A'</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.b = <span class="keyword">new</span> B(name, <span class="string">'123'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><p>1、声明语句<br>声明语句之后必须留一空行。</p>
+<p>2、<code>while</code>和<code>if</code>语句<br>如果主体只有一条语句，关键字和内容应该放在同一行，并且省略花括号。如果有多条语句，应该用花括号包裹并且以多行显示。<br>在单行显示的情况下，应该始终与上条语句之间留一空行，如果在它下面的语句是声明语句，那么它与下面的语句之间也应该留一空行。如果它下面的语句不是声明语句，则空行可留可不留。如果单行的长度超过<strong>80</strong>个字符，那么可以选择换行，但换行后主体必须被花括号包裹。<br>例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误</span></span><br><span class="line">isOk = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (isOk) callback()</span><br><span class="line"><span class="keyword">var</span> result = <span class="number">0</span>        <span class="comment">// 声明语句之后没有留空行</span></span><br><span class="line"><span class="keyword">if</span> (result)           <span class="comment">// if换行不能省略花括号</span></span><br><span class="line">  isOk = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确</span></span><br><span class="line">isOk = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (isOk) callback()</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (result) &#123;</span><br><span class="line">  isOk = <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3、<code>for</code>语句<br>任何情况下花括号都不省略，即使主体只有一条语句。</p>
+<p>4、<code>switch</code>语句<br>主体内的<code>case</code>与<code>switch</code>关键字保持一定缩进，如果<code>case</code>的主体只有一条语句，可以写成单行形式。<code>default</code>条件是必须的，不可省略。</p>
+<h2 id="代码例子"><a href="#代码例子" class="headerlink" title="代码例子"></a>代码例子</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">_BaseClass, _properties</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> $<span class="class"><span class="keyword">class</span> </span>= <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(<span class="keyword">this</span>.__init__) === <span class="string">'[object Function]'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.__init__.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">BuiltinClass</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (_BaseClass) &#123;</span><br><span class="line">    BuiltinClass.prototype = _BaseClass.prototype</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> __proto__ = $<span class="class"><span class="keyword">class</span>.<span class="title">prototype</span> </span>= <span class="keyword">new</span> BuiltinClass()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(_properties) === <span class="string">'[object Object]'</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> _properties) &#123;</span><br><span class="line">      <span class="keyword">if</span> (_properties.hasOwnProperty(key)) &#123;</span><br><span class="line">        __proto__[key] = _properties[key]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  __proto__.constructor = $<span class="class"><span class="keyword">class</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">	<span class="title">return</span> $<span class="title">class</span></span></span><br><span class="line"><span class="class">&#125;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">function</span> <span class="title">Shape</span>(<span class="title">_options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.options = _options ? _options : &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Shape.prototype.getType = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.__type</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Rect = extend(Shape, &#123;</span><br><span class="line">  __init__: <span class="function"><span class="keyword">function</span> (<span class="params">x, y, width, height</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.set(&#123;</span><br><span class="line">      x: x, <span class="attr">y</span>: y, </span><br><span class="line">      width: width, <span class="attr">height</span>: height</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;, </span><br><span class="line">  <span class="keyword">set</span>: function (properties) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(properties) === <span class="string">'[object Object]'</span>) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> properties) &#123;</span><br><span class="line">        <span class="keyword">if</span> (properties.hasOwnProperty(key)) &#123;</span><br><span class="line">          <span class="keyword">this</span>[key] = properties[key]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, </span><br><span class="line">  __type: <span class="string">'rect'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rect = <span class="keyword">new</span> Rect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">300</span>, <span class="number">150</span>)</span><br><span class="line"><span class="built_in">console</span>.log(rect.x, rect.y, rect.width, rect.height, rect.getType())</span><br></pre></td></tr></table></figure>
+
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>友情链接 /</span>
+        
+        <span><a href="https://pyclear.me">Pyclear</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>驱动 <a href="https://hexo.io/">Hexo</a>  主题 <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: '我的JavaScript命名规范',
+        owner: 'pixcai',
+        repo: 'pixcai.github.io',
+        oauth: {
+            client_id: 'df7e994d63cb504384eb',
+            client_secret: 'fc8379cd8be8720fc588f1509c5d0dff6460f23a',
+        },
+    })
+    gitment.render('comment-container')
+</script>
+
+</html>

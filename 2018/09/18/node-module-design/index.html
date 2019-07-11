@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="前端笔记">
+    <meta name="keyword" content="JavaScript HTML CSS Nodejs React Vue Python">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+
+    <title>
+        
+        npm模块设计原则 - pixcai的博客
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 求知若饥，虚心若愚 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <a href="/" class="avatar">
+            <img src="/images/avatar.jpg" />
+        </a>
+        <div class="name">
+            <i>pixcai</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#模块功能尽量保持单一"><span class="toc-text">模块功能尽量保持单一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块提供的函数用法尽量和Node函数风格保持一致"><span class="toc-text">模块提供的函数用法尽量和Node函数风格保持一致</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#确定模块的定位，不要轻易改动"><span class="toc-text">确定模块的定位，不要轻易改动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API尽量向下兼容"><span class="toc-text">API尽量向下兼容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与标准库函数或知名框架中同名的函数，用法尽量保持相同"><span class="toc-text">与标准库函数或知名框架中同名的函数，用法尽量保持相同</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 求知若饥，虚心若愚 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        npm模块设计原则
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-09-18 11:13:31</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#node" title="node">node</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>一个好的模块需要解决实际问题，但是能解决实际问题的模块不一定都能算得上优质的。模块也是一堆<code>JavaScript</code>代码，所以首先必须要符合<code>JavaScript</code>的代码规范，在这个前提下，才可以讨论其它原则。开发中我们会遇到各种需求，重复的多了，就会封装重复的逻辑到一个个模块中去以便多次复用。但是每个人对模块代码需要做哪些事情的认知多少有些差异，以下是个人觉得比较好的模块设计原则：</p>
+<h2 id="模块功能尽量保持单一"><a href="#模块功能尽量保持单一" class="headerlink" title="模块功能尽量保持单一"></a>模块功能尽量保持单一</h2><p>例如有两个需求：写一个函数判断字符串是否是回文字符串，写一个函数判断数字是否是素数。两个需求要实现的功能都不复杂，写在一个模块内也没什么不可以。但是，一个是处理字符串，一个是处理数字，如果分别写在两个模块中，很容易以后扩展。<code>npm</code>仓库中有很多这种单一的模块，例如<code>is-object</code>、<code>is-array</code>等等，因为功能单一又实用，被很多模块依赖，下载量反而比某些知名框架下载量都高。</p>
+<h2 id="模块提供的函数用法尽量和Node函数风格保持一致"><a href="#模块提供的函数用法尽量和Node函数风格保持一致" class="headerlink" title="模块提供的函数用法尽量和Node函数风格保持一致"></a>模块提供的函数用法尽量和Node函数风格保持一致</h2><p>不要随便命名一个函数，可以参考Node的库函数命名方式，这样使用者即使没时间看文档，也能凭经验猜出函数的用法。</p>
+<h2 id="确定模块的定位，不要轻易改动"><a href="#确定模块的定位，不要轻易改动" class="headerlink" title="确定模块的定位，不要轻易改动"></a>确定模块的定位，不要轻易改动</h2><p>如果模块只是要处理一个特定问题，例如将<code>2018/09/18 11:13:31</code>格式的日期字符串转换为ISO字符串<code>2018-09-18T03:13:31.000Z</code>。那么就不要再盲目增加诸如<code>2018-09-18 11:13:31</code>、<code>1537240411000</code>之类的格式处理，当使用者传递了不符合规则的参数时，直接报错是一种更好的方式。除非模块的定位本身就是处理一切日期字符串格式，比如<code>Moment.js</code>，那就是另一回事。</p>
+<h2 id="API尽量向下兼容"><a href="#API尽量向下兼容" class="headerlink" title="API尽量向下兼容"></a>API尽量向下兼容</h2><p>在上一个版本中提供的API，尽量不要在下一个版本中被删除或重命名，应该给使用者留下一个过渡的时间，当使用者依然使用旧的函数时，打印警告信息告诫他不要那么做。具体做法可以参考Node的API变迁。</p>
+<h2 id="与标准库函数或知名框架中同名的函数，用法尽量保持相同"><a href="#与标准库函数或知名框架中同名的函数，用法尽量保持相同" class="headerlink" title="与标准库函数或知名框架中同名的函数，用法尽量保持相同"></a>与标准库函数或知名框架中同名的函数，用法尽量保持相同</h2><p>例如实现一个数组排序函数<code>sort(array, fn)</code>，这里<code>sort</code>参数中的<code>fn</code>尽量保持和传递给<code>Array.prototype.sort</code>的参数相同。</p>
+
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>友情链接 /</span>
+        
+        <span><a href="https://pyclear.me">Pyclear</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>驱动 <a href="https://hexo.io/">Hexo</a>  主题 <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: 'npm模块设计原则',
+        owner: 'pixcai',
+        repo: 'pixcai.github.io',
+        oauth: {
+            client_id: 'df7e994d63cb504384eb',
+            client_secret: 'fc8379cd8be8720fc588f1509c5d0dff6460f23a',
+        },
+    })
+    gitment.render('comment-container')
+</script>
+
+</html>

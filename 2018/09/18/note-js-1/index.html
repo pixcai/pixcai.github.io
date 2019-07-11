@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="前端笔记">
+    <meta name="keyword" content="JavaScript HTML CSS Nodejs React Vue Python">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+
+    <title>
+        
+        JavaScript笔记(一) - pixcai的博客
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 求知若饥，虚心若愚 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <a href="/" class="avatar">
+            <img src="/images/avatar.jpg" />
+        </a>
+        <div class="name">
+            <i>pixcai</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-JSONP只能进行GET请求。"><span class="toc-text">1. JSONP只能进行GET请求。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Function-prototype-Function-proto-Function-prototype是函数。"><span class="toc-text">2. Function.prototype === Function.__proto__, Function.prototype是函数。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-jQuery-ajax默认携带cookie-axios需要设置withCredentials-true才能跨域。"><span class="toc-text">3. jQuery.ajax默认携带cookie, axios需要设置withCredentials: true才能跨域。</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 求知若饥，虚心若愚 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        JavaScript笔记(一)
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-09-18 14:58:33</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#node" title="node">node</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="1-JSONP只能进行GET请求。"><a href="#1-JSONP只能进行GET请求。" class="headerlink" title="1. JSONP只能进行GET请求。"></a>1. <strong>JSONP</strong>只能进行<strong>GET</strong>请求。</h3><h3 id="2-Function-prototype-Function-proto-Function-prototype是函数。"><a href="#2-Function-prototype-Function-proto-Function-prototype是函数。" class="headerlink" title="2. Function.prototype === Function.__proto__, Function.prototype是函数。"></a>2. <code>Function.prototype === Function.__proto__</code>, <code>Function.prototype</code>是函数。</h3><h3 id="3-jQuery-ajax默认携带cookie-axios需要设置withCredentials-true才能跨域。"><a href="#3-jQuery-ajax默认携带cookie-axios需要设置withCredentials-true才能跨域。" class="headerlink" title="3. jQuery.ajax默认携带cookie, axios需要设置withCredentials: true才能跨域。"></a>3. <code>jQuery.ajax</code>默认携带<strong>cookie</strong>, <code>axios</code>需要设置<code>withCredentials: true</code>才能跨域。</h3>
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>友情链接 /</span>
+        
+        <span><a href="https://pyclear.me">Pyclear</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>驱动 <a href="https://hexo.io/">Hexo</a>  主题 <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: 'JavaScript笔记(一)',
+        owner: 'pixcai',
+        repo: 'pixcai.github.io',
+        oauth: {
+            client_id: 'df7e994d63cb504384eb',
+            client_secret: 'fc8379cd8be8720fc588f1509c5d0dff6460f23a',
+        },
+    })
+    gitment.render('comment-container')
+</script>
+
+</html>
